@@ -16,7 +16,7 @@ namespace XUnitTestBanking
 
             Assert.Throws<InvalidOperationException>(
                 () => account.MakeWithdrawal(1100, DateTime.Now, "Attempt to overdraw")
-            );
+            ); ;
         }
     }
 }
