@@ -28,10 +28,11 @@ namespace MySuperBank
 
         private List<Transaction> allTransactions = new List<Transaction>();
 
-        public BankAccount(string name)
+        public BankAccount(string name, decimal initialBalance)
         {
             this.Owner = name;
             this.Number = accountNumberSeed.ToString();
+            MakeDeposit(initialBalance, DateTime.Now, "Initial Deposit");
             accountNumberSeed++;
         }
 
@@ -42,6 +43,7 @@ namespace MySuperBank
                 throw new ArgumentOutOfRangeException(nameof(amount), "Amount of deposit must be positive");
             }
             var deposit = new Transaction(amount, date, note);
+            allTransactions.Add(deposit);
         }
 
         public void MakeWithdrawal(decimal amount, DateTime date, string note)
