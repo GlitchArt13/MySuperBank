@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySuperBankLibray;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,9 @@ namespace MySuperBank
             Console.WriteLine($"Account {account.Number} was created for {account.Owner} with {account.Balance}");
 
             account.MakeWithdrawal(120, DateTime.Now, "Hammock");
-            Console.WriteLine($"Your bank bakance is {account.Balance}");
+            account.MakeWithdrawal(50, DateTime.Now, "Xbox game");
+
+            Console.WriteLine(account.GetAccountHistory());
             Console.ReadLine();
         }
     }

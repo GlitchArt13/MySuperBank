@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MySuperBank
+namespace MySuperBankLibray
 {
     public class BankAccount
     {
@@ -59,5 +59,19 @@ namespace MySuperBank
             var withdrawal = new Transaction(-amount, date, note);
             allTransactions.Add(withdrawal);
         }
+
+        public string GetAccountHistory()
+        {
+            var report = new StringBuilder();
+            report.AppendLine("Date\t\tAmount\tNote");
+
+            foreach(var trans in allTransactions)
+            {
+                report.AppendLine($"{trans.Date.ToShortDateString()}\t{trans.Amount}\t{trans.Notes}");
+            }
+
+            return report.ToString();
+        }
+
     }
 }
